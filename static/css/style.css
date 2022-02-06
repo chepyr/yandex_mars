@@ -20,10 +20,14 @@ body {
     font-family: FreeMono, monospace;
 }
 
-.training-container {
+.container {
    background: #c7b8ad;
    border-radius: 5px;
    padding: 10px;
+   text-align: left;
+}
+
+.training-container {
    text-align: center;
 }
 
@@ -31,4 +35,8 @@ body {
     width: 80vmin;
     border-radius: 5px;
     border: 3px solid #a6724c;
+}
+
+.proffesions-list {
+    text-align: left;
 }

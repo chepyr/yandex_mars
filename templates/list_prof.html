@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Список профессий</h2>
+    {% if list == "ul" %}
+    <ul>
+        {% for item in professions %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <ol>
+        {% for item in professions %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ol>
+    {% endif %}
+</div>
+
+{% endblock %}
