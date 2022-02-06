@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="training-container">
+    {% if prof in ["инженер", "строитель"] %}
+        <h1>Инженерные тренажеры</h1>
+        <img class="simulators-img" src="../static/images/engineering_simulators.jpg" alt="hmm...">
+    {% else %}
+        <h1>Научные симуляторы</h1>
+        <img class="simulators-img" src="../static/images/scientific_simulators.jpg" alt="hmm...">
+    {% endif %}
+
+</div>
+
+{% endblock %}
