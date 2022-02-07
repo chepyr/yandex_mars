@@ -62,10 +62,43 @@ h4.navbar-text {
 
 .member-pic {
     width: 50vw;
-        border: #29221c solid;
+    border: #29221c solid;
     border-radius: 10px;
 }
 
 .container-center {
     text-align: center;
+}
+
+.emblem {
+    width: 15vmin;
+    border: #29221c solid;
+    border-radius: 5px;
+}
+
+.form-control {
+    height: 20px;
+    border: #29221c solid;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.form-label {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.form-btn {
+    border: #29221c solid;
+    border-radius: 5px;
+    height: 40px;
+    width: 120px;
+    background: #a6724c;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.alert-danger {
+    font-weight: bold;
+    color: #c21717;
 }

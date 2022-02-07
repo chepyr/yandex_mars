@@ -1,7 +1,9 @@
-from flask import url_for, Flask, render_template
+from flask import Flask, render_template, redirect
 import json
+from loginform import LoginForm
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
 @app.route('/<title>')
@@ -68,6 +70,19 @@ def member():
     with open("templates/members.json", "rt", encoding="utf8") as f:
         data = json.loads(f.read())
     return render_template("member.html", data=data, title='Участник')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return redirect('/success')
+    return render_template("login.html", title="Аварийный доступ", form=form)
+
+
+@app.route('/success')
+def success():
+    return render_template("success.html", title="Успешно")
 
 
 if __name__ == '__main__':
