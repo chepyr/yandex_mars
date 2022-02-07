@@ -1,0 +1,25 @@
+{
+    "members": [
+        {
+            "name": "Тони",
+            "surname": "Старк",
+            "photo_url": "../static/images/tony.jpg",
+            "description": "Гений, миллиардер, плейбой, филантроп"
+        },
+        {
+            "name": "Норман",
+            "surname": "Озборн",
+            "photo_url": "../static/images/norman.jpg",
+            "description": "Сам своего рода учёный"
+        },
+        {
+            "name": "Отто",
+            "surname": "Октавиус",
+            "photo_url": "../static/images/otto.jpg",
+            "description": "Мощь Солнца у него в руках"
+        }
+    ]
+}
+
+
+

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-center">
+    {% set member = data["members"]|random %}
+    <h2>{{ member["name"] }} {{ member["surname"] }}</h2>
+    <img src="{{ member['photo_url'] }}" class="member-pic">
+    <h4>{{ member["description"] }}</h4>
+</div>
+
+{% endblock %}

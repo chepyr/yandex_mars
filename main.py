@@ -1,4 +1,5 @@
 from flask import url_for, Flask, render_template
+import json
 
 app = Flask(__name__)
 
@@ -60,6 +61,13 @@ def distribution():
 @app.route('/table/<sex>/<int:age>')
 def table(sex, age):
     return render_template('cabin_decoration.html', sex=sex, age=age, title='Каюта')
+
+
+@app.route('/member')
+def member():
+    with open("templates/members.json", "rt", encoding="utf8") as f:
+        data = json.loads(f.read())
+    return render_template("member.html", data=data, title='Участник')
 
 
 if __name__ == '__main__':

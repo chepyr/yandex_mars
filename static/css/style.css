@@ -42,10 +42,6 @@ h4.navbar-text {
     text-align: left;
 }
 
-.container-cabin-decoration {
-    text-align: center;
-}
-
 #square {
     border: #29221c solid;
     border-radius: 10px;
@@ -62,4 +58,14 @@ h4.navbar-text {
     height: 30vmin;
     border: #29221c solid;
     border-radius: 10px;
+}
+
+.member-pic {
+    width: 50vw;
+        border: #29221c solid;
+    border-radius: 10px;
+}
+
+.container-center {
+    text-align: center;
 }
