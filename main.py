@@ -51,5 +51,11 @@ def answer():
                            title=data['title'])
 
 
+@app.route('/distribution')
+def distribution():
+    astronauts = ['Том Холланд', 'Эндрю Гарфилд', 'Тоби Магуайр', 'Зендея', 'Мариса Томей']
+    return render_template('astronauts_accommodation.html', astronauts=astronauts)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')

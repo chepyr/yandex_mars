@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    {% set cabin = "Каюта №" %}
+    {% for elem in astronauts %}
+    <li>
+        <strong>{{ elem }}</strong>: {{ cabin }}{{ loop.index }}
+        {% if loop.first %} - Капитан корабля{% endif %}
+    </li>
+    {% endfor %}
+</div>
+
+{% endblock %}
