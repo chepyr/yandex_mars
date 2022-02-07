@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-cabin-decoration">
+    <h2>Оформление каюты</h2>
+    <table class="cabin">
+        <tr>
+            <td>
+                <h4>Цвет стен:</h4>
+            </td>
+            <td>
+                <h4>Эмблема:</h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {% if sex == 'male' and age < 21 %}
+                {% set color = "8097c4" %}
+                {% elif sex == 'male' %}
+                {% set color = "435094" %}
+                {% elif age < 21 %}
+                {% set color = "e895a4" %}
+                {% else %}
+                {% set color = "b0334a" %}
+                {% endif %}
+                <div id="square" style="background: #{{  color  }}"></div>
+            </td>
+            <td>
+                {% if age < 21 %}
+                {% set pic = "baby_alien" %}
+                {% else %}
+                {% set pic = "adult_alien" %}
+                {% endif %}
+                <img src="../../static/images/{{ pic }}.jpg" class="alien-cabin-img">
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

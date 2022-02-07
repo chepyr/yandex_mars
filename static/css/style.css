@@ -1,5 +1,6 @@
 body {
     background-color: #1c1b1c;
+    color: #29221c;
     font-family: FreeMono, monospace;
 }
 
@@ -39,4 +40,26 @@ h4.navbar-text {
 
 .proffesions-list {
     text-align: left;
+}
+
+.container-cabin-decoration {
+    text-align: center;
+}
+
+#square {
+    border: #29221c solid;
+    border-radius: 10px;
+    width: 30vmin;
+	height: 30vmin;
+}
+
+.cabin {
+    margin: auto;
+}
+
+
+.alien-cabin-img {
+    height: 30vmin;
+    border: #29221c solid;
+    border-radius: 10px;
 }
