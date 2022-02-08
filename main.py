@@ -3,6 +3,7 @@ import json
 from loginform import LoginForm
 from data import db_session
 from data.users import User
+from data.jobs import Jobs
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -10,22 +11,14 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 def main():
     db_session.global_init("db/blogs.db")
+    app.run(port=8080, host='127.0.0.1')
 
-    # user = User()
-    # user.surname = "Michelle"
-    # user.name = "Jones"
-    # user.age = 19
-    # user.position = "colonist"
-    # user.speciality = "student at the Massachusetts Institute of Technology"
-    # user.address = "module_4"
-    # user.email = "mj@mars.org"
-    # user.hashed_password = "who-is-peter"
-    #
-    # session = db_session.create_session()
-    # session.add(user)
-    # session.commit()
 
-    # app.run(port=8080, host='127.0.0.1')
+@app.route('/')
+def all_jobs():
+    session = db_session.create_session()
+    data_jobs = session.query(Jobs).all()
+    return render_template("work_table.html", title="Журнал работ", data=data_jobs)
 
 
 @app.route('/<title>')

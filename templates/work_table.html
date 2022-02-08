@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h2 style="text-align: center">Works log</h2>
+
+    <table style="cellpadding: 10px" align="center">
+        {% for job in data %}
+        <tbody>
+        <tr>
+            <th class="action-row">Action # {{ job.id }}</th>
+        </tr>
+        <tr>
+            <th class="row-head">Title of activity</th>
+            <td class="row-head">Team leader</td>
+            <td class="row-head">Duration</td>
+            <td class="row-head">List of collaborators</td>
+            <td class="row-head">Is finished</td>
+        </tr>
+
+        <tr>
+            <th class="row-job" style="text-align: left">{{ job.job }}</th>
+            <td class="row-job">{{ job.team_leader }}</td>
+            <td class="row-job">{{ job.work_size }}</td>
+            <td class="row-job">{{ job.collaborators }}</td>
+
+            {% set color = "cf8d7e" %}{% set field = "Is not completed"  %}
+            {% if job.is_finished %}
+            {% set color = "94b395" %}{% set field = "Is completed" %}
+            {% endif %}
+            <td class="row-job" style="background: #{{ color }}">{{ field }}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}
