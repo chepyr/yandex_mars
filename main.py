@@ -1,9 +1,31 @@
 from flask import Flask, render_template, redirect
 import json
 from loginform import LoginForm
+from data import db_session
+from data.users import User
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+
+
+def main():
+    db_session.global_init("db/blogs.db")
+
+    # user = User()
+    # user.surname = "Michelle"
+    # user.name = "Jones"
+    # user.age = 19
+    # user.position = "colonist"
+    # user.speciality = "student at the Massachusetts Institute of Technology"
+    # user.address = "module_4"
+    # user.email = "mj@mars.org"
+    # user.hashed_password = "who-is-peter"
+    #
+    # session = db_session.create_session()
+    # session.add(user)
+    # session.commit()
+
+    # app.run(port=8080, host='127.0.0.1')
 
 
 @app.route('/<title>')
@@ -86,4 +108,4 @@ def success():
 
 
 if __name__ == '__main__':
-    app.run(port=8080, host='127.0.0.1')
+    main()
