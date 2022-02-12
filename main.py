@@ -99,7 +99,6 @@ def galery():
         number = len(os.listdir('static/images/carousel'))
         new_image.save(f"static/images/carousel/{number + 1}.jpg")
     images_names = os.listdir('static/images/carousel')
-    print(images_names)
     return render_template("galery.html", images_names=images_names)
 
 
