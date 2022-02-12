@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/../../static/css/style.css"/>
 
-    <title>{{ title }}</title>
+    {% block links %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="/../../static/css/style.css"/>
+    {% block title %}{% endblock %}
 </head>
 <body>
 <header>

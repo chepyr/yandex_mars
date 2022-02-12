@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template, redirect, request
 import json
 from loginform import LoginForm
@@ -88,6 +90,17 @@ def load_photo():
         file = request.files['file']
         file.save("static/images/new_pic.jpg")
         return render_template("load_photo.html", photo=True)
+
+
+@app.route('/galery', methods=['POST', 'GET'])
+def galery():
+    if request.method == 'POST':
+        new_image = request.files['file']
+        number = len(os.listdir('static/images/carousel'))
+        new_image.save(f"static/images/carousel/{number + 1}.jpg")
+    images_names = os.listdir('static/images/carousel')
+    print(images_names)
+    return render_template("galery.html", images_names=images_names)
 
 
 @app.route('/member')

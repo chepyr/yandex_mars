@@ -67,6 +67,15 @@ h4.navbar-text {
     border-radius: 10px;
 }
 
+
+.carousel-pic {
+    width: 500px;
+    border: #29221c solid;
+    border-radius: 10px;
+    max-height: 60vh;
+    width: auto;
+}
+
 .container-center {
     text-align: center;
 }
