@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 import json
 from loginform import LoginForm
 from data import db_session
@@ -78,6 +78,16 @@ def distribution():
 @app.route('/table/<sex>/<int:age>')
 def table(sex, age):
     return render_template('cabin_decoration.html', sex=sex, age=age, title='Каюта')
+
+
+@app.route('/load_photo', methods=['POST', 'GET'])
+def load_photo():
+    if request.method == 'GET':
+        return render_template("load_photo.html", photo=False)
+    elif request.method == 'POST':
+        file = request.files['file']
+        file.save("static/images/new_pic.jpg")
+        return render_template("load_photo.html", photo=True)
 
 
 @app.route('/member')

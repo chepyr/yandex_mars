@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-center">
+    <h2>Загрузка фотографии</h2>
+    <h3>для участия в миссии</h3>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="photo">Приложите фотографию</label>
+            <input type="file" class="form-control" id="photo" name="file"><br>
+
+            {% if photo %}
+            <img class="member-pic" src="static/images/new_pic.jpg" alt="картинка">
+            {% endif %}
+        </div>
+        <button type="submit" class="btn form-btn">Отправить</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -5,6 +5,7 @@ body {
 }
 
 .navbar {
+    position: sticky;
    background: #a6724c;
    border-radius: 5px;
    padding: 10px;
@@ -61,7 +62,7 @@ h4.navbar-text {
 }
 
 .member-pic {
-    width: 50vw;
+    width: 40vw;
     border: #29221c solid;
     border-radius: 10px;
 }
@@ -124,4 +125,8 @@ h4.navbar-text {
     text-align: center;
     padding: 10px;
     margin: 0px;
+}
+
+.form-control-file {
+    text-size: 20px;
 }
