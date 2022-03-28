@@ -5,21 +5,43 @@ body {
 }
 
 .navbar {
-    position: sticky;
+   position: sticky;
    background: #a6724c;
    border-radius: 5px;
    padding: 10px;
    margin-bottom: 10px;
 }
 
-.navbar-text {
+.nav-table{
+    width: 90vw;
+}
+
+.navbar-header {
    color: #29221c;
-   text-align: center;
+   text-align: left;
    margin:0px;
 }
 
-h4.navbar-text {
+.nav-user-info {
+    text-align: right;
+}
+
+h4.navbar-header {
     color: #752309;
+}
+
+
+.register-login-btn {
+    border: #29221c solid;
+    border-radius: 5px;
+    height: 40px;
+    width: 120px;
+    background: #1c1b1c;
+    color: #c7c8bd;
+    font-size: 20px;
+    margin-left: 10px;
+
+    text-decoration: none;
 }
 
 .container {
@@ -139,3 +161,4 @@ h4.navbar-text {
 .form-control-file {
     text-size: 20px;
 }
+

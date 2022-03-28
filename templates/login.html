@@ -4,48 +4,31 @@
 
 <div class="container">
     <img src="../static/images/emblem.png" class="emblem">
-    <h2>Аварийный доступ</h2>
+    <h2>Авторизация</h2>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
-            {{ form.astronaut_id.label(class="form-label") }}<br>
-            {{ form.astronaut_id(class="form-control") }}<br>
-            {% for error in form.astronaut_id.errors %}
+            {{ form.email.label(class="form-label") }}<br>
+            {{ form.email(class="form-control", type="email") }}<br>
+            {% for error in form.email.errors %}
         <div class="alert alert-danger" role="alert">
             {{ error }}
         </div>
         {% endfor %}
         </p>
         <p>
-            {{ form.astronaut_password.label(class="form-label") }}<br>
-            {{ form.astronaut_password(class="form-control", type="password") }}<br>
-            {% for error in form.astronaut_password.errors %}
+            {{ form.password.label(class="form-label") }}<br>
+            {{ form.password(class="form-control", type="password") }}<br>
+            {% for error in form.password.errors %}
         <div class="alert alert-danger" role="alert">
             {{ error }}
         </div>
         {% endfor %}
         </p>
 
-        <p>
-            {{ form.captain_id.label(class="form-label") }}<br>
-            {{ form.captain_id(class="form-control") }}<br>
-            {% for error in form.captain_id.errors %}
-        <div class="alert alert-danger" role="alert">
-            {{ error }}
-        </div>
-        {% endfor %}
-        </p>
-        <p>
-            {{ form.captain_password.label(class="form-label") }}<br>
-            {{ form.captain_password(class="form-control", type="password") }}<br>
-            {% for error in form.captain_password.errors %}
-        <div class="alert alert-danger" role="alert">
-            {{ error }}
-        </div>
-        {% endfor %}
-        </p>
-
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
         <p>{{ form.submit(type="submit", class="form-btn") }}</p>
+        <div>{{ message }}</div>
     </form>
 </div>
 
