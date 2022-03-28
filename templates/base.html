@@ -18,7 +18,9 @@
                 </td>
                 <td class="nav-user-info">
                     {% if current_user.is_authenticated %}
-                    <a class="navbar-brand link-button" href="/logout">{{ current_user.name }}</a>
+                    <a class="navbar-brand link-button" href="/logout">{{current_user.surname }} {{
+                        current_user.name }}
+                    </a>
                     {% else %}
                     <a class="btn register-login-btn" href="/register">Зарегистрироваться</a>
                     <a class="btn register-login-btn" href="/login">Войти</a>
