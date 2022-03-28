@@ -6,7 +6,7 @@
     <h2 style="text-align: center">Works log</h2>
 
     {% if current_user.is_authenticated %}
-    <a href="job" class="btn btn-secondary custom-button">Добавить работу</a>
+    <a href="/jobs" class="btn btn-secondary custom-button">Добавить работу</a>
     {% endif %}
 
     <table style="cellpadding: 10px" align="center">
@@ -35,6 +35,24 @@
             {% endif %}
             <td class="row-job" style="background: #{{ color }}">{{ field }}</td>
         </tr>
+        {% if current_user.is_authenticated and (current_user == job.user or
+        current_user.id == 1) %}
+        <tr>
+            <td class="row-head">
+                <a href="/jobs/{{ job.id }}" class="btn btn-warning custom-button"
+                   style="font-size: 18px;">
+                    Изменить
+                </a>
+            </td>
+            <td class="row-head">
+                <a href="/jobs_delete/{{ job.id }}" class="btn btn-danger custom-button"
+                   style="font-size: 18px;">
+                    Удалить
+                </a>
+            </td>
+        </tr>
+        {% endif %}
+
         </tbody>
         {% endfor %}
     </table>
