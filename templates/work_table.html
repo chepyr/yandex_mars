@@ -5,6 +5,10 @@
 <div class="container">
     <h2 style="text-align: center">Works log</h2>
 
+    {% if current_user.is_authenticated %}
+    <a href="job" class="btn btn-secondary custom-button">Добавить работу</a>
+    {% endif %}
+
     <table style="cellpadding: 10px" align="center">
         {% for job in data %}
         <tbody>
@@ -25,7 +29,7 @@
             <td class="row-job">{{ job.work_size }}</td>
             <td class="row-job">{{ job.collaborators }}</td>
 
-            {% set color = "cf8d7e" %}{% set field = "Is not completed"  %}
+            {% set color = "cf8d7e" %}{% set field = "Is not completed" %}
             {% if job.is_finished %}
             {% set color = "94b395" %}{% set field = "Is completed" %}
             {% endif %}

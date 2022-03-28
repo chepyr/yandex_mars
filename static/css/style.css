@@ -30,6 +30,31 @@ h4.navbar-header {
     color: #752309;
 }
 
+.link-button {
+    text-decoration: none;
+    color: #d7c8bd;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.link-button:hover {
+    text-decoration: underline;
+}
+
+
+.custom-button {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #29221c;
+    background: #9e8c7e;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.custom-button:hover {
+    text-decoration: underline;
+}
 
 .register-login-btn {
     border: #29221c solid;
@@ -144,7 +169,7 @@ h4.navbar-header {
 
 .row-head {
     font-weight: bold;
-        border-radius: 5px;
+    border-radius: 5px;
     background: #9e8c7e;
     padding: 10px;
     margin: 0px;

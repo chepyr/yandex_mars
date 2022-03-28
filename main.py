@@ -2,12 +2,15 @@ import os
 
 import flask
 from flask import Flask, render_template, redirect, request
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, logout_user, login_required, \
+    current_user
 
 import json
 
 from forms.user import RegisterForm
-from loginform import LoginForm
+from forms.loginform import LoginForm
+from forms.job import JobsForm
+
 from data import db_session
 from data.users import User
 from data.jobs import Jobs
@@ -188,6 +191,33 @@ def reqister():
         db_sess.commit()
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect("/")
+
+
+@app.route('/job', methods=['GET', 'POST'])
+@login_required
+def add_news():
+    form = JobsForm()
+    if form.validate_on_submit():
+        db_sess = db_session.create_session()
+        job = Jobs()
+        job.job = form.job.data
+        job.team_leader = form.team_leader.data
+        job.work_size = form.work_size.data
+        job.collaborators = form.collaborators.data
+        job.is_finished = form.is_finished.data
+
+        db_sess.add(job)
+        db_sess.commit()
+        return redirect('/')
+    return render_template('job.html', title='Добавление работы',
+                           form=form)
 
 
 @login_manager.user_loader
