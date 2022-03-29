@@ -1,7 +1,8 @@
 import os
 
 import flask
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, make_response, \
+    jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, \
     current_user
 
@@ -13,7 +14,7 @@ from forms.user import RegisterForm
 from forms.loginform import LoginForm
 from forms.job import JobsForm
 
-from data import db_session
+from data import db_session, jobs_api
 from data.users import User
 from data.jobs import Jobs
 
@@ -26,7 +27,13 @@ login_manager.init_app(app)
 
 def main():
     db_session.global_init("db/blogs.db")
-    app.run(port=8080, host='127.0.0.1')
+    app.register_blueprint(jobs_api.blueprint)
+    app.run(port=5000, host='localhost')
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
 
 @app.route('/')
