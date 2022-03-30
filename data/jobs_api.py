@@ -40,15 +40,20 @@ def get_job(job_id):
     )
 
 
-@blueprint.route('/api/jobs/<int:job_id>', methods=['POST'])
+@blueprint.route('/api/jobs', methods=['POST'])
 def create_job():
     if not request.json:
         return jsonify({'error': 'Empty request'})
+
     elif not all(key in request.json for key in
                  ['id', 'job', 'work_size', 'collaborators', 'is_finished',
                   'team_leader']):
         return jsonify({'error': 'Bad request'})
+
     db_sess = db_session.create_session()
+    if db_sess.query(Jobs).filter(Jobs.id == request.json['id']).first():
+        return jsonify({'error': 'Id already exists'})
+
     job = Jobs(
         id=request.json['id'],
         job=request.json['job'],
@@ -58,5 +63,58 @@ def create_job():
         team_leader=request.json['team_leader'],
     )
     db_sess.add(job)
+    db_sess.commit()
+    return jsonify({'success': 'OK'})
+
+
+@blueprint.route('/api/jobs/<int:job_id>', methods=['DELETE'])
+def delete_job(job_id):
+    db_sess = db_session.create_session()
+    job = db_sess.query(Jobs).get(job_id)
+    if not job:
+        return jsonify({'error': 'Not found'})
+    db_sess.delete(job)
+    db_sess.commit()
+    return jsonify({'success': 'OK'})
+
+
+@blueprint.route('/api/jobs/<int:job_id>', methods=['PUT'])
+def change_job(job_id):
+    if not request.json:
+        return jsonify({'error': 'Empty request'})
+
+    db_sess = db_session.create_session()
+    job = db_sess.query(Jobs).get(job_id)
+    if not job:
+        return jsonify({'error': 'Not found'})
+
+    args = {
+        'id': job.id,
+        'job': job.job,
+        'collaborators': job.collaborators,
+        'work_size': job.work_size,
+        'is_finished': job.is_finished,
+        'team_leader': job.team_leader
+    }
+    for change in request.json:
+        args[change] = request.json[change]
+
+        # если пользователь хочет поменять id работы
+        if change == 'id':
+            # Проверка, что работы с таким id ещё не существует
+            if db_sess.query(Jobs).filter(
+                    Jobs.id == request.json['id']).first():
+                return jsonify({'error': 'Id already exists'})
+
+    new_job = Jobs(
+        id=args['id'],
+        job=args['job'],
+        work_size=args['work_size'],
+        collaborators=args['collaborators'],
+        is_finished=args['is_finished'],
+        team_leader=args['team_leader'],
+    )
+    db_sess.delete(job)
+    db_sess.add(new_job)
     db_sess.commit()
     return jsonify({'success': 'OK'})
