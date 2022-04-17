@@ -32,11 +32,9 @@ def get_job(job_id):
     if not job:
         return jsonify({'error': 'Not found'})
     return jsonify(
-        {
-            'jobs': job.to_dict(only=(
-                'id', 'job', 'team_leader', 'work_size', 'collaborators',
-                'start_date', 'end_date', 'is_finished'))
-        }
+        {'job': job.to_dict(only=(
+            'id', 'job', 'team_leader', 'work_size', 'collaborators',
+            'start_date', 'end_date', 'is_finished'))}
     )
 
 
@@ -79,7 +77,7 @@ def delete_job(job_id):
 
 
 @blueprint.route('/api/jobs/<int:job_id>', methods=['PUT'])
-def change_job(job_id):
+def update_job(job_id):
     if not request.json:
         return jsonify({'error': 'Empty request'})
 

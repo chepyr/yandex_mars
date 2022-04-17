@@ -5,6 +5,7 @@ from flask import Flask, render_template, redirect, request, make_response, \
     jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, \
     current_user
+from flask_restful import Api
 
 import json
 
@@ -14,11 +15,14 @@ from forms.user import RegisterForm
 from forms.loginform import LoginForm
 from forms.job import JobsForm
 
-from data import db_session, jobs_api
+from data import db_session, jobs_api, user_api, users_resources
 from data.users import User
 from data.jobs import Jobs
 
 app = Flask(__name__)
+api = Api(app)
+api.add_resource(users_resources.UsersResource, '/api/v2/users/<int:user_id>')
+api.add_resource(users_resources.UsersListResource, '/api/v2/users')
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 login_manager = LoginManager()
@@ -28,6 +32,7 @@ login_manager.init_app(app)
 def main():
     db_session.global_init("db/blogs.db")
     app.register_blueprint(jobs_api.blueprint)
+    app.register_blueprint(user_api.blueprint)
     app.run(port=5000, host='localhost')
 
 
